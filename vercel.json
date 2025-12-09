@@ -9,7 +9,7 @@
             "src": "restaurant-app/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "dist/restaurant-app"
+                "distDir": "dist/restaurant-app/browser"
             }
         }
     ],
