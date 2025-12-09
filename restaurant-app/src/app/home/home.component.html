@@ -1,0 +1,66 @@
+<header class="hero">
+    <nav class="navbar container" [class.nav-open]="isMenuOpen">
+        <div class="logo">Trattoria Rustica</div>
+        <div class="menu-toggle" (click)="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links" [class.active]="isMenuOpen">
+            <li><a href="#" (click)="toggleMenu()">Menu</a></li>
+            <li><a href="#" (click)="toggleMenu()">About</a></li>
+            <li><a href="#" (click)="toggleMenu()">Reservations</a></li>
+            <li class="mobile-only"><button class="btn btn-primary" (click)="toggleMenu()">Order Online</button></li>
+        </ul>
+        <button class="btn btn-primary desktop-only">Order Online</button>
+    </nav>
+
+    <div class="hero-content container fade-in-up">
+        <h1>Authentic Italian Flavors,<br>Warm Family Atmosphere</h1>
+        <p>Experience the taste of tradition with our wood-fired pizzas and handmade pastas.</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">Book a Table</button>
+        </div>
+    </div>
+</header>
+
+<section class="featured-menu container">
+    <h2>Our Menu</h2>
+
+    <div class="category-tabs">
+        <button *ngFor="let cat of categories" class="tab-btn" [class.active]="selectedCategory === cat"
+            (click)="selectCategory(cat)">
+            {{ cat }}
+        </button>
+    </div>
+
+    <div class="dish-grid">
+        <div class="dish-card fade-in-up" *ngFor="let dish of filteredDishes">
+            <div class="dish-image" [style.backgroundImage]="'url(' + dish.image + ')'">
+                <span *ngIf="dish.isChefSpecial" class="badge special-badge">Chef's Special</span>
+                <span *ngIf="dish.isVegetarian" class="badge veg-badge">Veg</span>
+            </div>
+            <div class="dish-info">
+                <div class="dish-header">
+                    <h3>{{ dish.name }}</h3>
+                    <div class="dish-price">{{ dish.price }}</div>
+                </div>
+                <p>{{ dish.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-preview">
+    <div class="container">
+        <h2>From Our Family to Yours</h2>
+        <p>Since 1985, Trattoria Rustica has been serving heart-warming dishes made with love and the freshest local
+            ingredients.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Trattoria Rustica. All rights reserved.</p>
+    </div>
+</footer>

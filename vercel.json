@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "restaurant-app/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist/restaurant-app"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/backend/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/restaurant-app/$1"
+        }
+    ]
+}
